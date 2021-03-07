@@ -460,7 +460,7 @@ namespace Hypixel.NET
             RateLimitCheck();
             //Create the request
             var client = new RestClient("https://api.hypixel.net/");
-            var request = new RestRequest($"watchdogstats?key={_apiKey}", Method.GET);
+            var request = new RestRequest($"punishmentstats?key={_apiKey}", Method.GET);
 
             //Get the response and Deserialize
             var response = client.Execute(request);
@@ -513,7 +513,7 @@ namespace Hypixel.NET
 
             //Create the request
             var client = new RestClient("https://api.hypixel.net/");
-            var request = new RestRequest($"gamecounts?key={_apiKey}", Method.GET);
+            var request = new RestRequest($"counts?key={_apiKey}", Method.GET);
 
             //Get the response and Deserialize
             var response = client.Execute(request);
@@ -1224,7 +1224,7 @@ namespace Hypixel.NET
             RateLimitCheck();
             //Create the request
             var client = new RestClient("https://api.hypixel.net/");
-            var request = new RestRequest($"watchdogstats?key={_apiKey}", Method.GET);
+            var request = new RestRequest($"punishmentstats?key={_apiKey}", Method.GET);
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
@@ -1277,7 +1277,7 @@ namespace Hypixel.NET
 
             //Create the request
             var client = new RestClient("https://api.hypixel.net/");
-            var request = new RestRequest($"gamecounts?key={_apiKey}", Method.GET);
+            var request = new RestRequest($"counts?key={_apiKey}", Method.GET);
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
