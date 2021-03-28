@@ -1,20 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Hypixel.NET.SkyblockApi.Profile.Objectives
 {
     public class CollectFarmingResources
     {
-        [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonProperty("completed_at")] public readonly long _completedAt;
+        [JsonProperty("status")] public string Status { get; private set; }
 
-        [JsonProperty("progress")]
-        public long Progress { get; private set; }
+        [JsonProperty("progress")] public long Progress { get; private set; }
 
-        [JsonProperty("completed_at")]
-        public readonly long _completedAt;
         public DateTime CompletedAt
         {
             get
@@ -25,16 +20,12 @@ namespace Hypixel.NET.SkyblockApi.Profile.Objectives
             }
         }
 
-        [JsonProperty("POTATO_ITEM")]
-        public bool PotatoItem { get; private set; }
+        [JsonProperty("POTATO_ITEM")] public bool PotatoItem { get; private set; }
 
-        [JsonProperty("CARROT_ITEM")]
-        public bool CarrotItem { get; private set; }
+        [JsonProperty("CARROT_ITEM")] public bool CarrotItem { get; private set; }
 
-        [JsonProperty("PUMPKIN")]
-        public bool Pumpkin { get; private set; }
+        [JsonProperty("PUMPKIN")] public bool Pumpkin { get; private set; }
 
-        [JsonProperty("MELON")]
-        public bool Melon { get; private set; }
+        [JsonProperty("MELON")] public bool Melon { get; private set; }
     }
 }

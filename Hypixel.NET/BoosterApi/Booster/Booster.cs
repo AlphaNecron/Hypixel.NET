@@ -5,20 +5,17 @@ namespace Hypixel.NET.Booster
 {
     public class Booster
     {
-        [JsonProperty("purchaserUuid")]
-        public string PurchaserUuid { get; private set; }
+        [JsonProperty("dateActivated")] private readonly long _dateActivated;
 
-        [JsonProperty("amount")]
-        public double Amount { get; private set; }
+        [JsonProperty("gameType")] private readonly int _gameType;
+        [JsonProperty("purchaserUuid")] public string PurchaserUuid { get; private set; }
 
-        [JsonProperty("originalLength")]
-        public int OriginalLength { get; private set; }
+        [JsonProperty("amount")] public double Amount { get; private set; }
 
-        [JsonProperty("length")]
-        public int Length { get; private set; }
+        [JsonProperty("originalLength")] public int OriginalLength { get; private set; }
 
-        [JsonProperty("gameType")]
-        private readonly int _gameType;
+        [JsonProperty("length")] public int Length { get; private set; }
+
         public string GameType
         {
             get
@@ -50,8 +47,7 @@ namespace Hypixel.NET.Booster
                 }
             }
         }
-        [JsonProperty("dateActivated")]
-        private readonly long _dateActivated;
+
         public DateTime DateActivated
         {
             get

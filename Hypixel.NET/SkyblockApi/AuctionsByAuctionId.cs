@@ -1,8 +1,5 @@
-﻿using Hypixel.NET.SkyblockApi.Auctions;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Hypixel.NET.SkyblockApi
 {
@@ -10,10 +7,8 @@ namespace Hypixel.NET.SkyblockApi
     {
         public bool FromCache;
 
-        [JsonProperty("success")]
-        public bool WasSuccessful { get; private set; }
+        [JsonProperty("success")] public bool WasSuccessful { get; private set; }
 
-        [JsonProperty("auctions")]
-        public List<Auctions.Auction> Auction { get; private set; }
+        [JsonProperty("auctions")] public List<Auctions.Auction> Auction { get; private set; }
     }
 }

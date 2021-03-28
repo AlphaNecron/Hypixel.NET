@@ -6,13 +6,10 @@ namespace Hypixel.NET.GuildApi
     {
         public bool FromCache;
 
-        [JsonProperty("success")]
-        public bool WasSuccessful { get; private set; }
+        [JsonProperty("success")] public bool WasSuccessful { get; private set; }
 
-        [JsonProperty("guild")]
-        public Guild.Guild Guild { get; private set; }
+        [JsonProperty("guild")] public Guild.Guild Guild { get; private set; }
 
-        [JsonProperty("cause")]
-        public string Cause { get; private set; }
+        [JsonProperty("cause")] public string Cause { get; private set; }
     }
 }

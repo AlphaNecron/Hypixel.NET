@@ -1,20 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Hypixel.NET.SkyblockApi.Profile.Objectives
 {
     public class CollectNetherResources
     {
-        [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonProperty("completed_at")] private readonly long _completedAt;
+        [JsonProperty("status")] public string Status { get; private set; }
 
-        [JsonProperty("progress")]
-        public long Progress { get; private set; }
+        [JsonProperty("progress")] public long Progress { get; private set; }
 
-        [JsonProperty("completed_at")]
-        private readonly long _completedAt;
         public DateTime CompletedAt
         {
             get
@@ -25,10 +20,8 @@ namespace Hypixel.NET.SkyblockApi.Profile.Objectives
             }
         }
 
-        [JsonProperty("BLAZE_ROD")]
-        public bool BlazeRod { get; private set; }
+        [JsonProperty("BLAZE_ROD")] public bool BlazeRod { get; private set; }
 
-        [JsonProperty("NETHER_STALK")]
-        public bool NetherStalk { get; private set; }
+        [JsonProperty("NETHER_STALK")] public bool NetherStalk { get; private set; }
     }
 }

@@ -17,15 +17,14 @@ using Hypixel.NET.WatchdogStatsApi;
 using Newtonsoft.Json;
 using RestSharp;
 
-
 namespace Hypixel.NET
 {
     public class HypixelApi
     {
-        private readonly string _apiKey;
-        private readonly int _cacheStoreTime;
         private static int _apiRequests;
         private static readonly MemoryCache ApiMemoryCache = MemoryCache.Default;
+        private readonly string _apiKey;
+        private readonly int _cacheStoreTime;
         private Timer _apiResetTimer;
 
         public HypixelApi(string apiKey, int cacheTimeInSeconds)
@@ -64,19 +63,23 @@ namespace Hypixel.NET
 
             return false;
         }
+
         #region Caching
+
         private void AddItemToCache(string itemType, string apiResponse)
         {
             var cacheItemPolicy = new CacheItemPolicy
             {
-                AbsoluteExpiration = DateTime.Now.AddSeconds(_cacheStoreTime),
+                AbsoluteExpiration = DateTime.Now.AddSeconds(_cacheStoreTime)
             };
 
             ApiMemoryCache.Add(itemType, apiResponse, cacheItemPolicy);
         }
+
         #endregion
 
         #region Ratelimitng
+
         private void ResetApiLimit(object sender, ElapsedEventArgs e)
         {
             _apiRequests = 0;
@@ -93,20 +96,19 @@ namespace Hypixel.NET
                 return;
             }
 
-            if (_apiRequests < 118)
-            {
-                return;
-            }
+            if (_apiRequests < 118) return;
 
             const string rateLimitHit = "Rate limit hit!";
             var hypixelRateLimitException = new ApplicationException(rateLimitHit);
             throw hypixelRateLimitException;
         }
+
         #endregion
 
         #region synchronous
 
         #region Player
+
         public GetPlayerData GetUserByUuid(string uuid)
         {
             ApplicationException hypixelException;
@@ -122,7 +124,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""));
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""));
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -174,7 +177,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""));
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""));
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -222,9 +226,11 @@ namespace Hypixel.NET
             hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Friends
+
         public GetFriends GetPlayerFriendsByUuid(string uuid)
         {
             var cacheUuid = uuid + "Type:Friends";
@@ -237,7 +243,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetFriends>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetFriends>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -285,6 +292,7 @@ namespace Hypixel.NET
         #endregion
 
         #region Guild
+
         public GetGuild GetGuildByGuildName(string guildName)
         {
             var cacheGuild = guildName + "Type:GuildName";
@@ -297,7 +305,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -368,7 +377,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -399,9 +409,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Boosters
+
         public GetBoosters GetBoosters()
         {
             RateLimitCheck();
@@ -426,9 +438,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Api Key info
+
         public GetKey GetApiKeyInformation(string apiKey)
         {
             RateLimitCheck();
@@ -452,9 +466,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Watchdog
+
         public GetWatchdogStats GetWatchdogStats()
         {
             RateLimitCheck();
@@ -478,9 +494,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Leaderboards
+
         public GetLeaderboards GetLeaderboards()
         {
             RateLimitCheck();
@@ -504,9 +522,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Game Counts
+
         public GetGameCounts GetGameCounts()
         {
             RateLimitCheck();
@@ -531,9 +551,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Skyblock
+
         public GetSkyBlockProfile GetSkyblockProfileByProfileId(string skyblockProfileId)
         {
             string message;
@@ -549,7 +571,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<GetSkyBlockProfile>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<GetSkyBlockProfile>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -605,9 +628,7 @@ namespace Hypixel.NET
 
             //Go through each profile to get API response
             foreach (var profile in userData.Player.Stats.SkyBlock.Profiles)
-            {
                 profileList.Add(GetSkyblockProfileByProfileId(profile.Value.ProfileId));
-            }
 
             return profileList;
         }
@@ -652,7 +673,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<AuctionsByPlayer>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<AuctionsByPlayer>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -714,7 +736,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<AuctionsByProfile>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<AuctionsByProfile>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -760,7 +783,8 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = JsonConvert.DeserializeObject<AuctionByAuctionId>(getCacheItem.Value.ToString());
+                    var deserializedResponseCache =
+                        JsonConvert.DeserializeObject<AuctionByAuctionId>(getCacheItem.Value.ToString());
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -841,9 +865,11 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Mojang
+
         private string GetUuidFromPlayerName(string playerName)
         {
             //Create the request
@@ -853,16 +879,14 @@ namespace Hypixel.NET
             //Get the response and Deserialize
             var response = client.Execute(request);
 
-            if (response.Content == "")
-            {
-                return null;
-            }
+            if (response.Content == "") return null;
 
             dynamic responseDeserialized = JsonConvert.DeserializeObject(response.Content);
 
             //Mojang stores the uuid under id so return that
             return responseDeserialized.id;
         }
+
         #endregion
 
         #endregion
@@ -870,7 +894,8 @@ namespace Hypixel.NET
         #region Async
 
         #region Player
-        public async Task <GetPlayerData> GetUserByUuidAsync(string uuid)
+
+        public async Task<GetPlayerData> GetUserByUuidAsync(string uuid)
         {
             ApplicationException hypixelException;
 
@@ -885,7 +910,10 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""))).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task.Run(() =>
+                            JsonConvert.DeserializeObject<GetPlayerData>(
+                                getCacheItem.Value.ToString().Replace(".0", "")))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -900,7 +928,9 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetPlayerData>(response.Content.Replace(".0", ""))).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetPlayerData>(response.Content.Replace(".0", "")))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful && responseDeserialized.Player != null)
@@ -937,7 +967,10 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetPlayerData>(getCacheItem.Value.ToString().Replace(".0", ""))).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task.Run(() =>
+                            JsonConvert.DeserializeObject<GetPlayerData>(
+                                getCacheItem.Value.ToString().Replace(".0", "")))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -961,7 +994,9 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetPlayerData>(response.Content.Replace(".0", ""))).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetPlayerData>(response.Content.Replace(".0", "")))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful && responseDeserialized.Player != null)
@@ -985,9 +1020,11 @@ namespace Hypixel.NET
             hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Friends
+
         public async Task<GetFriends> GetPlayerFriendsByUuidAsync(string uuid)
         {
             var cacheUuid = uuid + "Type:Friends";
@@ -1000,7 +1037,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetFriends>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task
+                        .Run(() => JsonConvert.DeserializeObject<GetFriends>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1015,7 +1054,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetFriends>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetFriends>(response.Content))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1032,7 +1072,7 @@ namespace Hypixel.NET
             throw hypixelException;
         }
 
-        public async Task <GetFriends> GetPlayerFriendsByPlayerNameAsync(string playerName)
+        public async Task<GetFriends> GetPlayerFriendsByPlayerNameAsync(string playerName)
         {
             var playerUuid = await GetUuidFromPlayerNameAsync(playerName).ConfigureAwait(false);
 
@@ -1048,7 +1088,8 @@ namespace Hypixel.NET
         #endregion
 
         #region Guild
-        public async Task <GetGuild> GetGuildByGuildNameAsync(string guildName)
+
+        public async Task<GetGuild> GetGuildByGuildNameAsync(string guildName)
         {
             var cacheGuild = guildName + "Type:GuildName";
 
@@ -1060,7 +1101,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task
+                        .Run(() => JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1075,7 +1118,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(response.Content))
+                .ConfigureAwait(false);
 
             string message;
             ApplicationException hypixelException;
@@ -1120,7 +1164,7 @@ namespace Hypixel.NET
             return await GetGuildByUuidAsync(playerUuid).ConfigureAwait(false);
         }
 
-        public async Task <GetGuild> GetGuildByUuidAsync(string uuid)
+        public async Task<GetGuild> GetGuildByUuidAsync(string uuid)
         {
             var cacheGuild = uuid + "Type:GuildPlayerUuid";
 
@@ -1132,7 +1176,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task
+                        .Run(() => JsonConvert.DeserializeObject<GetGuild>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1147,7 +1193,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetGuild>(response.Content))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1163,10 +1210,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Boosters
-        public async Task <GetBoosters> GetBoostersAsync()
+
+        public async Task<GetBoosters> GetBoostersAsync()
         {
             RateLimitCheck();
 
@@ -1176,7 +1225,9 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetBoosters>(response.Content.Replace(".0", ""))).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetBoosters>(response.Content.Replace(".0", "")))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1190,10 +1241,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Api Key info
-        public async Task <GetKey> GetApiKeyInformationAsync(string apiKey)
+
+        public async Task<GetKey> GetApiKeyInformationAsync(string apiKey)
         {
             RateLimitCheck();
             //Create the request
@@ -1202,7 +1255,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetKey>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetKey>(response.Content))
+                .ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1216,10 +1270,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Watchdog
-        public async Task <GetWatchdogStats> GetWatchdogStatsAsync()
+
+        public async Task<GetWatchdogStats> GetWatchdogStatsAsync()
         {
             RateLimitCheck();
             //Create the request
@@ -1228,7 +1284,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetWatchdogStats>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetWatchdogStats>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1242,10 +1299,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Leaderboards
-        public async Task <GetLeaderboards> GetLeaderboardsAsync()
+
+        public async Task<GetLeaderboards> GetLeaderboardsAsync()
         {
             RateLimitCheck();
             //Create the request
@@ -1254,7 +1313,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run (() => JsonConvert.DeserializeObject<GetLeaderboards>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetLeaderboards>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1268,10 +1328,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Game Counts
-        public async Task <GetGameCounts> GetGameCountsAsync()
+
+        public async Task<GetGameCounts> GetGameCountsAsync()
         {
             RateLimitCheck();
 
@@ -1281,7 +1343,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetGameCounts>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetGameCounts>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1295,10 +1358,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Skyblock
-        public async Task <GetSkyBlockProfile> GetSkyblockProfileByProfileIdAsync(string skyblockProfileId)
+
+        public async Task<GetSkyBlockProfile> GetSkyblockProfileByProfileIdAsync(string skyblockProfileId)
         {
             string message;
             ApplicationException hypixelException;
@@ -1313,7 +1378,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<GetSkyBlockProfile>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task.Run(() =>
+                            JsonConvert.DeserializeObject<GetSkyBlockProfile>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1327,7 +1394,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetSkyBlockProfile>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetSkyBlockProfile>(response.Content)).ConfigureAwait(false);
 
             //Throw expection
             if (responseDeserialized.Profile == null)
@@ -1369,14 +1437,12 @@ namespace Hypixel.NET
 
             //Go through each profile to get API response
             foreach (var profile in userData.Player.Stats.SkyBlock.Profiles)
-            {
                 profileList.Add(GetSkyblockProfileByProfileId(profile.Value.ProfileId));
-            }
 
             return profileList;
         }
 
-        public async Task <GetAuctionPage> GetAuctionPageAsync(int auctionPage)
+        public async Task<GetAuctionPage> GetAuctionPageAsync(int auctionPage)
         {
             RateLimitCheck();
 
@@ -1386,7 +1452,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetAuctionPage>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetAuctionPage>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1401,7 +1468,7 @@ namespace Hypixel.NET
             throw hypixelException;
         }
 
-        public async Task <AuctionsByPlayer> GetAuctionsByPlayerUuidAsync(string uuid)
+        public async Task<AuctionsByPlayer> GetAuctionsByPlayerUuidAsync(string uuid)
         {
             string message;
             ApplicationException hypixelException;
@@ -1416,7 +1483,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<AuctionsByPlayer>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task
+                        .Run(() => JsonConvert.DeserializeObject<AuctionsByPlayer>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1430,7 +1499,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<AuctionsByPlayer>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<AuctionsByPlayer>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1463,7 +1533,7 @@ namespace Hypixel.NET
             return await GetAuctionsByPlayerUuidAsync(uuid).ConfigureAwait(false);
         }
 
-        public async Task <AuctionsByProfile> GetAuctionsByProfileIdAsync(string id)
+        public async Task<AuctionsByProfile> GetAuctionsByProfileIdAsync(string id)
         {
             string message;
             ApplicationException hypixelException;
@@ -1478,7 +1548,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<AuctionsByProfile>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task.Run(() =>
+                            JsonConvert.DeserializeObject<AuctionsByProfile>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1492,7 +1564,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<AuctionsByProfile>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<AuctionsByProfile>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1509,7 +1582,7 @@ namespace Hypixel.NET
             throw hypixelException;
         }
 
-        public async Task <AuctionByAuctionId> GetAuctionByAuctionIdAsync(string id)
+        public async Task<AuctionByAuctionId> GetAuctionByAuctionIdAsync(string id)
         {
             string message;
             ApplicationException hypixelException;
@@ -1524,7 +1597,9 @@ namespace Hypixel.NET
                 //Verify that this isn't null - if is then will do API request as normal
                 if (getCacheItem != null)
                 {
-                    var deserializedResponseCache = await Task.Run(() => JsonConvert.DeserializeObject<AuctionByAuctionId>(getCacheItem.Value.ToString())).ConfigureAwait(false);
+                    var deserializedResponseCache = await Task.Run(() =>
+                            JsonConvert.DeserializeObject<AuctionByAuctionId>(getCacheItem.Value.ToString()))
+                        .ConfigureAwait(false);
                     deserializedResponseCache.FromCache = true;
                     return deserializedResponseCache;
                 }
@@ -1538,7 +1613,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<AuctionByAuctionId>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<AuctionByAuctionId>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1565,7 +1641,8 @@ namespace Hypixel.NET
 
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
-            var responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject<GetBazaarProducts>(response.Content)).ConfigureAwait(false);
+            var responseDeserialized = await Task
+                .Run(() => JsonConvert.DeserializeObject<GetBazaarProducts>(response.Content)).ConfigureAwait(false);
 
             //Verify that the request was successful
             if (responseDeserialized.WasSuccessful)
@@ -1579,10 +1656,12 @@ namespace Hypixel.NET
             var hypixelException = new ApplicationException(message, response.ErrorException);
             throw hypixelException;
         }
+
         #endregion
 
         #region Mojang
-        private async Task <string> GetUuidFromPlayerNameAsync(string playerName)
+
+        private async Task<string> GetUuidFromPlayerNameAsync(string playerName)
         {
             //Create the request
             var client = new RestClient("https://api.mojang.com/");
@@ -1591,16 +1670,15 @@ namespace Hypixel.NET
             //Get the response and Deserialize
             var response = await client.ExecuteTaskAsync(request).ConfigureAwait(false);
 
-            if (response.Content == "")
-            {
-                return null;
-            }
+            if (response.Content == "") return null;
 
-            dynamic responseDeserialized = await Task.Run(() => JsonConvert.DeserializeObject(response.Content)).ConfigureAwait(false);
+            dynamic responseDeserialized =
+                await Task.Run(() => JsonConvert.DeserializeObject(response.Content)).ConfigureAwait(false);
 
             //Mojang stores the uuid under id so return that
             return responseDeserialized.id;
         }
+
         #endregion
 
         #endregion

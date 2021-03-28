@@ -5,70 +5,47 @@ namespace Hypixel.NET.LeaderboardsApi.Leaderboard
 {
     public class Leaderboard
     {
-        [JsonProperty("TNTGAMES")]
-        public List<LeaderboardData> TntGames;
+        [JsonProperty("ARCADE")] public List<LeaderboardData> Arcade;
 
-        [JsonProperty("WALLS")]
-        public List<LeaderboardData> Walls;
+        [JsonProperty("ARENA")] public List<LeaderboardData> Arena;
 
-        [JsonProperty("QUAKECRAFT")]
-        public List<LeaderboardData> Quake;
+        [JsonProperty("BEDWARS")] public List<LeaderboardData> BedWars;
 
-        [JsonProperty("SKYWARS")]
-        public List<LeaderboardData> SkyWars;
+        [JsonProperty("SURVIVAL_GAMES")] public List<LeaderboardData> BlitzSg;
 
-        [JsonProperty("VAMPIREZ")]
-        public List<LeaderboardData> VampireZ;
+        [JsonProperty("BUILD_BATTLE")] public List<LeaderboardData> BuildBattle;
 
-        [JsonProperty("WALLS3")]
-        public List<LeaderboardData> Walls3;
+        [JsonProperty("MCGO")] public List<LeaderboardData> CopsAndCrims;
 
-        [JsonProperty("SKYCLASH")]
-        public List<LeaderboardData> SkyClash;
+        [JsonProperty("DUELS")] public List<LeaderboardData> Duels;
 
-        [JsonProperty("BEDWARS")]
-        public List<LeaderboardData> BedWars;
+        [JsonProperty("MURDER_MYSTERY")] public List<LeaderboardData> MurderMystery;
 
-        [JsonProperty("BUILD_BATTLE")]
-        public List<LeaderboardData> BuildBattle;
+        [JsonProperty("PAINTBALL")] public List<LeaderboardData> PaintBall;
 
-        [JsonProperty("UHC")]
-        public List<LeaderboardData> Uhc;
+        [JsonProperty("QUAKECRAFT")] public List<LeaderboardData> Quake;
 
-        [JsonProperty("PAINTBALL")]
-        public List<LeaderboardData> PaintBall;
+        [JsonProperty("SKYCLASH")] public List<LeaderboardData> SkyClash;
 
-        [JsonProperty("SUPER_SMASH")]
-        public List<LeaderboardData> Smash;
+        [JsonProperty("SKYWARS")] public List<LeaderboardData> SkyWars;
 
-        [JsonProperty("TRUE_COMBAT")]
-        public List<LeaderboardData> TrueCombat;
+        [JsonProperty("SUPER_SMASH")] public List<LeaderboardData> Smash;
 
-        [JsonProperty("MCGO")]
-        public List<LeaderboardData> CopsAndCrims;
+        [JsonProperty("SPEED_UHC")] public List<LeaderboardData> SpeedUhc;
+        [JsonProperty("TNTGAMES")] public List<LeaderboardData> TntGames;
 
-        [JsonProperty("SURVIVAL_GAMES")]
-        public List<LeaderboardData> BlitzSg;
+        [JsonProperty("TRUE_COMBAT")] public List<LeaderboardData> TrueCombat;
 
-        [JsonProperty("BATTLEGROUND")]
-        public List<LeaderboardData> Warlords;
+        [JsonProperty("GINGERBREAD")] public List<LeaderboardData> TurboKartRacers;
 
-        [JsonProperty("MURDER_MYSTERY")]
-        public List<LeaderboardData> MurderMystery;
+        [JsonProperty("UHC")] public List<LeaderboardData> Uhc;
 
-        [JsonProperty("ARENA")]
-        public List<LeaderboardData> Arena;
+        [JsonProperty("VAMPIREZ")] public List<LeaderboardData> VampireZ;
 
-        [JsonProperty("SPEED_UHC")]
-        public List<LeaderboardData> SpeedUhc;
+        [JsonProperty("WALLS")] public List<LeaderboardData> Walls;
 
-        [JsonProperty("ARCADE")]
-        public List<LeaderboardData> Arcade;
+        [JsonProperty("WALLS3")] public List<LeaderboardData> Walls3;
 
-        [JsonProperty("DUELS")]
-        public List<LeaderboardData> Duels;
-
-        [JsonProperty("GINGERBREAD")]
-        public List<LeaderboardData> TurboKartRacers;
+        [JsonProperty("BATTLEGROUND")] public List<LeaderboardData> Warlords;
     }
 }

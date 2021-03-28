@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Hypixel.NET.SkyblockApi.Profile
 {
     public class ExploreHub
     {
-        [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonProperty("activated_at")] private readonly long _activatedAt;
 
-        [JsonProperty("activated_at")]
-        private readonly long _activatedAt;
+        [JsonProperty("completed_at")] private readonly long _completedAt;
+        [JsonProperty("status")] public string Status { get; private set; }
+
         public DateTime ActivatedAt
         {
             get
@@ -20,11 +20,8 @@ namespace Hypixel.NET.SkyblockApi.Profile
             }
         }
 
-        [JsonProperty("activated_at_sb")]
-        public long ActivatedAtSb { get; private set; }
+        [JsonProperty("activated_at_sb")] public long ActivatedAtSb { get; private set; }
 
-        [JsonProperty("completed_at")]
-        private readonly long _completedAt;
         public DateTime CompletedAt
         {
             get
@@ -35,7 +32,6 @@ namespace Hypixel.NET.SkyblockApi.Profile
             }
         }
 
-        [JsonProperty("completed_at_sb")]
-        public long CompletedAtSb { get; private set; }
+        [JsonProperty("completed_at_sb")] public long CompletedAtSb { get; private set; }
     }
 }

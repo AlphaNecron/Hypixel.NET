@@ -5,47 +5,46 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
     public class Arcade
     {
         #region general
-        [JsonProperty("coins")]
-        public string Coins { get; private set; }
+
+        [JsonProperty("coins")] public string Coins { get; private set; }
+
         #endregion
 
         #region creeper attack
 
-        [JsonProperty("max_wave")]
-        public int MaxWave { get; private set; }
+        [JsonProperty("max_wave")] public int MaxWave { get; private set; }
+
+        #endregion
+
+        #region partygames
+
+        [JsonProperty("wins_party")] public int PartyGamesWins { get; private set; }
 
         #endregion
 
         #region hypixel says/santa says
 
-        [JsonProperty("rounds_santa_says")]
-        public int RoundsSantaSays { get; private set; }
+        [JsonProperty("rounds_santa_says")] public int RoundsSantaSays { get; private set; }
 
-        [JsonProperty("rounds_simon_says")]
-        public int SimonSaysRounds { get; private set; }
+        [JsonProperty("rounds_simon_says")] public int SimonSaysRounds { get; private set; }
 
-        [JsonProperty("wins_simon_says")]
-        public int SimonSaysWins { get; private set; }
+        [JsonProperty("wins_simon_says")] public int SimonSaysWins { get; private set; }
 
         #endregion
 
         #region dragonwars
 
-        [JsonProperty("kills_dragonwars2")]
-        public int Dragonwars2Kills { get; private set; }
+        [JsonProperty("kills_dragonwars2")] public int Dragonwars2Kills { get; private set; }
 
-        [JsonProperty("wins_dragonwars2")]
-        public int Dragonwars2Wins { get; private set; }
+        [JsonProperty("wins_dragonwars2")] public int Dragonwars2Wins { get; private set; }
 
         #endregion
 
         #region hole in the wall
 
-        [JsonProperty("hitw_record_q")]
-        public int HoleInTheWallRecordQualifier { get; private set; }
+        [JsonProperty("hitw_record_q")] public int HoleInTheWallRecordQualifier { get; private set; }
 
-        [JsonProperty("hitw_record_f")]
-        public int HoleInTheWallRecordFinalScore { get; private set; }
+        [JsonProperty("hitw_record_f")] public int HoleInTheWallRecordFinalScore { get; private set; }
 
         [JsonProperty("rounds_hole_in_the_wall")]
         public int RoundsHoleInTheWall { get; private set; }
@@ -57,44 +56,29 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         #region farmhunt
 
-        [JsonProperty("poop_collected")]
-        public int PoopCollected { get; private set; }
+        [JsonProperty("poop_collected")] public int PoopCollected { get; private set; }
 
-        [JsonProperty("wins_farm_hunt")]
-        public long WinsFarmHunt { get; private set; }
+        [JsonProperty("wins_farm_hunt")] public long WinsFarmHunt { get; private set; }
 
         #endregion
-        
+
         #region galaxy wars
 
-        [JsonProperty("sw_kills")]
-        public int GalaxyWarsKills { get; private set; }
+        [JsonProperty("sw_kills")] public int GalaxyWarsKills { get; private set; }
 
-        [JsonProperty("sw_shots_fired")]
-        public int GalaxyWarsShotsFired{ get; private set; }
+        [JsonProperty("sw_shots_fired")] public int GalaxyWarsShotsFired { get; private set; }
 
-        [JsonProperty("sw_rebel_kills")]
-        public int GalaxyWarsRebelKills { get; private set; }
+        [JsonProperty("sw_rebel_kills")] public int GalaxyWarsRebelKills { get; private set; }
 
-        [JsonProperty("sw_deaths")]
-        public int GalaxyWarsDeaths { get; private set; }
+        [JsonProperty("sw_deaths")] public int GalaxyWarsDeaths { get; private set; }
 
-        [JsonProperty("sw_empire_kills")]
-        public int GalaxyWarsEmpireKills { get; private set; }
-
-
-        #endregion
-
-        #region partygames
-
-        [JsonProperty("wins_party")]
-        public int PartyGamesWins { get; private set; }
+        [JsonProperty("sw_empire_kills")] public int GalaxyWarsEmpireKills { get; private set; }
 
         #endregion
 
         #region miniwalls
-        [JsonProperty("miniwalls_activeKit")]
-        public string MiniwallsActiveKit { get; private set; }
+
+        [JsonProperty("miniwalls_activeKit")] public string MiniwallsActiveKit { get; private set; }
 
         [JsonProperty("arrows_hit_mini_walls")]
         public int ArrowsHitMiniWalls { get; private set; }
@@ -102,53 +86,46 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("final_kills_mini_walls")]
         public int FinalKillsMiniWalls { get; private set; }
 
-        [JsonProperty("kills_mini_walls")]
-        public int KillsMiniWalls { get; private set; }
+        [JsonProperty("kills_mini_walls")] public int KillsMiniWalls { get; private set; }
 
-        [JsonProperty("wins_mini_walls")]
-        public int WinsMiniWalls { get; private set; }
+        [JsonProperty("wins_mini_walls")] public int WinsMiniWalls { get; private set; }
 
         [JsonProperty("wither_kills_mini_walls")]
         public int WitherKillsMiniWalls { get; private set; }
 
-        [JsonProperty("deaths_mini_walls")]
-        public int DeathsMiniWalls { get; private set; }
+        [JsonProperty("deaths_mini_walls")] public int DeathsMiniWalls { get; private set; }
 
         [JsonProperty("arrows_shot_mini_walls")]
         public int ArrowsShotMiniWalls { get; private set; }
 
         [JsonProperty("wither_damage_mini_walls")]
         public int WitherDamageMiniWalls { get; private set; }
+
         #endregion
 
         #region soccer
 
-        [JsonProperty("powerkicks_soccer")]
-        public long SoccerPowerkicks { get; private set; }
+        [JsonProperty("powerkicks_soccer")] public long SoccerPowerkicks { get; private set; }
 
-        [JsonProperty("goals_soccer")]
-        public long SoccerGoals { get; private set; }
+        [JsonProperty("goals_soccer")] public long SoccerGoals { get; private set; }
 
-        [JsonProperty("wins_soccer")]
-        public long SoccerWins { get; private set; }
+        [JsonProperty("wins_soccer")] public long SoccerWins { get; private set; }
 
-        [JsonProperty("kicks_soccer")]
-        public long KicksSoccer { get; private set; }
+        [JsonProperty("kicks_soccer")] public long KicksSoccer { get; private set; }
 
         #endregion
 
         #region throwout
-        [JsonProperty("kills_throw_out")]
-        public int ThrowOutKills { get; private set; }
 
-        [JsonProperty("deaths_throw_out")]
-        public int ThrowOutDeaths { get; private set; }
+        [JsonProperty("kills_throw_out")] public int ThrowOutKills { get; private set; }
+
+        [JsonProperty("deaths_throw_out")] public int ThrowOutDeaths { get; private set; }
+
         #endregion
 
         #region bounty hunters
 
-        [JsonProperty("kills_oneinthequiver")]
-        public long BountyHunterKills { get; private set; }
+        [JsonProperty("kills_oneinthequiver")] public long BountyHunterKills { get; private set; }
 
         [JsonProperty("bounty_kills_oneinthequiver")]
         public long BountyHunterBountyKills { get; private set; }
@@ -159,20 +136,17 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         #endregion
 
         #region zombies
-        [JsonProperty("headshots_dayone")]
-        public long HeadshotsDayone { get; private set; }
 
-        [JsonProperty("kills_dayone")]
-        public long KillsDayone { get; private set; }
+        [JsonProperty("headshots_dayone")] public long HeadshotsDayone { get; private set; }
 
-        [JsonProperty("wins_dayone")]
-        public long WinsDayone { get; private set; }
+        [JsonProperty("kills_dayone")] public long KillsDayone { get; private set; }
+
+        [JsonProperty("wins_dayone")] public long WinsDayone { get; private set; }
 
         [JsonProperty("fastest_time_10_zombies_deadend_normal")]
         public long FastestTime10_ZombiesDeadendNormal { get; private set; }
 
-        [JsonProperty("best_round_zombies")]
-        public long BestRoundZombies { get; private set; }
+        [JsonProperty("best_round_zombies")] public long BestRoundZombies { get; private set; }
 
         [JsonProperty("fastest_time_10_zombies")]
         public long FastestTime10_Zombies { get; private set; }
@@ -180,26 +154,20 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("players_revived_zombies")]
         public long PlayersRevivedZombies { get; private set; }
 
-        [JsonProperty("headshots_zombies")]
-        public long HeadshotsZombies { get; private set; }
+        [JsonProperty("headshots_zombies")] public long HeadshotsZombies { get; private set; }
 
-        [JsonProperty("deaths_zombies")]
-        public long DeathsZombies { get; private set; }
+        [JsonProperty("deaths_zombies")] public long DeathsZombies { get; private set; }
 
-        [JsonProperty("bullets_shot_zombies")]
-        public long BulletsShotZombies { get; private set; }
+        [JsonProperty("bullets_shot_zombies")] public long BulletsShotZombies { get; private set; }
 
         [JsonProperty("times_knocked_down_zombies")]
         public long TimesKnockedDownZombies { get; private set; }
 
-        [JsonProperty("doors_opened_zombies")]
-        public long DoorsOpenedZombies { get; private set; }
+        [JsonProperty("doors_opened_zombies")] public long DoorsOpenedZombies { get; private set; }
 
-        [JsonProperty("zombie_kills_zombies")]
-        public long ZombieKillsZombies { get; private set; }
+        [JsonProperty("zombie_kills_zombies")] public long ZombieKillsZombies { get; private set; }
 
-        [JsonProperty("bullets_hit_zombies")]
-        public long BulletsHitZombies { get; private set; }
+        [JsonProperty("bullets_hit_zombies")] public long BulletsHitZombies { get; private set; }
 
         [JsonProperty("best_round_zombies_deadend")]
         public long BestRoundZombiesDeadend { get; private set; }
@@ -336,11 +304,9 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("fastest_time_30_zombies_deadend_normal")]
         public long FastestTime30_ZombiesDeadendNormal { get; private set; }
 
-        [JsonProperty("wins_zombies")]
-        public long WinsZombies { get; private set; }
+        [JsonProperty("wins_zombies")] public long WinsZombies { get; private set; }
 
-        [JsonProperty("wins_zombies_deadend")]
-        public long WinsZombiesDeadend { get; private set; }
+        [JsonProperty("wins_zombies_deadend")] public long WinsZombiesDeadend { get; private set; }
 
         [JsonProperty("wins_zombies_deadend_normal")]
         public long WinsZombiesDeadendNormal { get; private set; }
@@ -500,14 +466,17 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         [JsonProperty("doors_opened_zombies_deadend_rip")]
         public long DoorsOpenedZombiesDeadendRip { get; private set; }
+
         #endregion
 
         #region hide and seek
+
         [JsonProperty("party_pooper_hider_wins_hide_and_seek")]
         public int HideAndSeekHiderWins { get; private set; }
 
         [JsonProperty("party_pooper_seeker_wins_hide_and_seek")]
         public int HideAndSeekSeekerWins { get; private set; }
+
         #endregion
     }
 }

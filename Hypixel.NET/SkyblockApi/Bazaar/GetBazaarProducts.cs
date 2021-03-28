@@ -1,20 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Hypixel.NET.SkyblockApi.Bazaar
 {
     public class GetBazaarProducts
     {
-        [JsonProperty("success")]
-        public bool WasSuccessful { get; private set; }
+        [JsonProperty("lastUpdated")] private readonly long _lastUpdated;
+        [JsonProperty("success")] public bool WasSuccessful { get; private set; }
 
-        [JsonProperty("cause")]
-        public string Cause { get; private set; }
+        [JsonProperty("cause")] public string Cause { get; private set; }
 
-        [JsonProperty("lastUpdated")]
-        private readonly long _lastUpdated;
         public DateTime LastUpdated
         {
             get
@@ -24,7 +20,7 @@ namespace Hypixel.NET.SkyblockApi.Bazaar
                 return convertToDateTime;
             }
         }
-        [JsonProperty("products")]
-        public Dictionary<string, Product> Products { get; private set; }
+
+        [JsonProperty("products")] public Dictionary<string, Product> Products { get; private set; }
     }
 }

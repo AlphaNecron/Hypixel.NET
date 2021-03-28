@@ -6,106 +6,82 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
     public class Bedwars
     {
         #region general
-        [JsonProperty("Experience")]
-        public int Experience { get; private set; }
 
-        [JsonProperty("spray_glyph_field")]
-        public string SprayGlyphField { get; private set; }
+        [JsonProperty("Experience")] public int Experience { get; private set; }
 
-        [JsonProperty("activeDeathCry")]
-        public string ActiveDeathCry { get; private set; }
+        [JsonProperty("spray_glyph_field")] public string SprayGlyphField { get; private set; }
 
-        [JsonProperty("activeKillEffect")]
-        public string ActiveKillEffect { get; private set; }
+        [JsonProperty("activeDeathCry")] public string ActiveDeathCry { get; private set; }
 
-        [JsonProperty("packages")]
-        public List<string> Packages { get; private set; }
+        [JsonProperty("activeKillEffect")] public string ActiveKillEffect { get; private set; }
 
-        [JsonProperty("activeVictoryDance")]
-        public string ActiveVictoryDance { get; private set; }
+        [JsonProperty("packages")] public List<string> Packages { get; private set; }
 
-        [JsonProperty("spray_storage_new")]
-        public string SprayStorage { get; private set; }
+        [JsonProperty("activeVictoryDance")] public string ActiveVictoryDance { get; private set; }
 
-        [JsonProperty("winstreak")]
-        public int Winstreak { get; private set; }
+        [JsonProperty("spray_storage_new")] public string SprayStorage { get; private set; }
 
-        [JsonProperty("coins")]
-        public int Coins { get; private set; }
+        [JsonProperty("winstreak")] public int Winstreak { get; private set; }
 
-        [JsonProperty("activeNPCSkin")]
-        public string ActiveNpcSkin { get; private set; }
+        [JsonProperty("coins")] public int Coins { get; private set; }
 
-        [JsonProperty("activeIslandTopper")]
-        public string ActiveIslandTopper { get; private set; }
+        [JsonProperty("activeNPCSkin")] public string ActiveNpcSkin { get; private set; }
+
+        [JsonProperty("activeIslandTopper")] public string ActiveIslandTopper { get; private set; }
 
         [JsonProperty("activeProjectileTrail")]
         public string ActiveProjectileTrail { get; private set; }
 
-        [JsonProperty("glyph_storage_new")]
-        public string GlyphStorage { get; private set; }
+        [JsonProperty("glyph_storage_new")] public string GlyphStorage { get; private set; }
 
-        [JsonProperty("activeSprays")]
-        public string ActiveSprays { get; private set; }
+        [JsonProperty("activeSprays")] public string ActiveSprays { get; private set; }
 
-        [JsonProperty("activeBedDestroy")]
-        public string ActiveBedDestroySound { get; private set; }
+        [JsonProperty("activeBedDestroy")] public string ActiveBedDestroySound { get; private set; }
 
-        [JsonProperty("activeGlyph")]
-        public string ActiveGlyph { get; private set; }
+        [JsonProperty("activeGlyph")] public string ActiveGlyph { get; private set; }
+
         #endregion
 
         #region loot boxes
-        [JsonProperty("bedwars_boxes")]
-        public int BedwarsBoxes { get; private set; }
 
-        [JsonProperty("bedwars_box")]
-        public int BedwarsBox { get; private set; }
+        [JsonProperty("bedwars_boxes")] public int BedwarsBoxes { get; private set; }
 
-        [JsonProperty("chest_history")]
-        public string ChestHistory { get; private set; }
+        [JsonProperty("bedwars_box")] public int BedwarsBox { get; private set; }
 
-        [JsonProperty("bedwars_box_commons")]
-        public int BedwarsBoxCommons { get; private set; }
+        [JsonProperty("chest_history")] public string ChestHistory { get; private set; }
 
-        [JsonProperty("bedwars_box_rares")]
-        public int BedwarsBoxRares { get; private set; }
+        [JsonProperty("bedwars_box_commons")] public int BedwarsBoxCommons { get; private set; }
 
-        [JsonProperty("chest_history_new")]
-        public List<string> ChestHistoryNew { get; private set; }
+        [JsonProperty("bedwars_box_rares")] public int BedwarsBoxRares { get; private set; }
+
+        [JsonProperty("chest_history_new")] public List<string> ChestHistoryNew { get; private set; }
 
         [JsonProperty("bedwars_box_legendaries")]
         public int BedwarsBoxLegendaries { get; private set; }
 
-        [JsonProperty("bedwars_box_epics")]
-        public int BedwarsBoxEpics { get; private set; }
+        [JsonProperty("bedwars_box_epics")] public int BedwarsBoxEpics { get; private set; }
 
-        [JsonProperty("Bedwars_openedChests")]
-        public int BedwarsOpenedChests { get; private set; }
+        [JsonProperty("Bedwars_openedChests")] public int BedwarsOpenedChests { get; private set; }
 
         [JsonProperty("Bedwars_openedCommons")]
         public int BedwarsOpenedCommons { get; private set; }
 
-        [JsonProperty("Bedwars_openedRares")]
-        public int BedwarsOpenedRares { get; private set; }
+        [JsonProperty("Bedwars_openedRares")] public int BedwarsOpenedRares { get; private set; }
 
-        [JsonProperty("Bedwars_openedEpics")]
-        public int BedwarsOpenedEpics { get; private set; }
+        [JsonProperty("Bedwars_openedEpics")] public int BedwarsOpenedEpics { get; private set; }
 
         [JsonProperty("Bedwars_openedLegendaries")]
         public int BedwarsOpenedLegendaries { get; private set; }
 
-        [JsonProperty("bedwars_lunar_boxes")]
-        public int BedwarsLunarBoxes { get; private set; }
+        [JsonProperty("bedwars_lunar_boxes")] public int BedwarsLunarBoxes { get; private set; }
 
-        [JsonProperty("bedwars_easter_boxes")]
-        public int BedwarsEasterBoxes { get; private set; }
+        [JsonProperty("bedwars_easter_boxes")] public int BedwarsEasterBoxes { get; private set; }
 
         #endregion
 
         #region overall stats
-        [JsonProperty("final_deaths_bedwars")]
-        public int FinalDeathsBedwars { get; private set; }
+
+        [JsonProperty("final_deaths_bedwars")] public int FinalDeathsBedwars { get; private set; }
 
         [JsonProperty("gold_resources_collected_bedwars")]
         public int GoldResourcesCollectedBedwars { get; private set; }
@@ -116,17 +92,14 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("resources_collected_bedwars")]
         public int ResourcesCollectedBedwars { get; private set; }
 
-        [JsonProperty("games_played_bedwars")]
-        public int GamesPlayedBedwars { get; private set; }
+        [JsonProperty("games_played_bedwars")] public int GamesPlayedBedwars { get; private set; }
 
         [JsonProperty("entity_attack_final_kills_bedwars")]
         public int EntityAttackFinalKillsBedwars { get; private set; }
 
-        [JsonProperty("beds_lost_bedwars")]
-        public int BedsLostBedwars { get; private set; }
+        [JsonProperty("beds_lost_bedwars")] public int BedsLostBedwars { get; private set; }
 
-        [JsonProperty("kills_bedwars")]
-        public int KillsBedwars { get; private set; }
+        [JsonProperty("kills_bedwars")] public int KillsBedwars { get; private set; }
 
         [JsonProperty("entity_attack_kills_bedwars")]
         public int EntityAttackKillsBedwars { get; private set; }
@@ -134,38 +107,31 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("fall_final_deaths_bedwars")]
         public int FallFinalDeathsBedwars { get; private set; }
 
-        [JsonProperty("losses_bedwars")]
-        public int LossesBedwars { get; private set; }
+        [JsonProperty("losses_bedwars")] public int LossesBedwars { get; private set; }
 
         [JsonProperty("items_purchased_bedwars")]
         public int BedwarsItemsPurchasedBedwars { get; private set; }
 
-        [JsonProperty("final_kills_bedwars")]
-        public int FinalKillsBedwars { get; private set; }
+        [JsonProperty("final_kills_bedwars")] public int FinalKillsBedwars { get; private set; }
 
         [JsonProperty("iron_resources_collected_bedwars")]
         public int IronResourcesCollectedBedwars { get; private set; }
 
-        [JsonProperty("beds_broken_bedwars")]
-        public int BedsBrokenBedwars { get; private set; }
+        [JsonProperty("beds_broken_bedwars")] public int BedsBrokenBedwars { get; private set; }
 
         [JsonProperty("_items_purchased_bedwars")]
         public int ItemsPurchasedBedwars { get; private set; }
 
-        [JsonProperty("void_kills_bedwars")]
-        public int VoidKillsBedwars { get; private set; }
+        [JsonProperty("void_kills_bedwars")] public int VoidKillsBedwars { get; private set; }
 
-        [JsonProperty("deaths_bedwars")]
-        public int DeathsBedwars { get; private set; }
+        [JsonProperty("deaths_bedwars")] public int DeathsBedwars { get; private set; }
 
-        [JsonProperty("fall_deaths_bedwars")]
-        public int FallDeathsBedwars { get; private set; }
+        [JsonProperty("fall_deaths_bedwars")] public int FallDeathsBedwars { get; private set; }
 
         [JsonProperty("permanent _items_purchased_bedwars")]
         public int PermanentItemsPurchasedBedwars { get; private set; }
 
-        [JsonProperty("wins_bedwars")]
-        public int WinsBedwars { get; private set; }
+        [JsonProperty("wins_bedwars")] public int WinsBedwars { get; private set; }
 
         [JsonProperty("void_final_kills_bedwars")]
         public int VoidFinalKillsBedwars { get; private set; }
@@ -179,8 +145,7 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("entity_attack_final_deaths_bedwars")]
         public int EntityAttackFinalDeathsBedwars { get; private set; }
 
-        [JsonProperty("void_deaths_bedwars")]
-        public int VoidDeathsBedwars { get; private set; }
+        [JsonProperty("void_deaths_bedwars")] public int VoidDeathsBedwars { get; private set; }
 
         [JsonProperty("entity_explosion_final_kills_bedwars")]
         public int EntityExplosionFinalKillsBedwars { get; private set; }
@@ -191,8 +156,7 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("void_final_deaths_bedwars")]
         public int VoidFinalDeathsBedwars { get; private set; }
 
-        [JsonProperty("fall_kills_bedwars")]
-        public int FallKillsBedwars { get; private set; }
+        [JsonProperty("fall_kills_bedwars")] public int FallKillsBedwars { get; private set; }
 
         [JsonProperty("fall_final_kills_bedwars")]
         public int FallFinalKillsBedwars { get; private set; }
@@ -224,14 +188,15 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("fire_tick_kills_bedwars")]
         public int FireTickKillsBedwars { get; private set; }
 
-        [JsonProperty("fire_kills_bedwars")]
-        public int FireKillsBedwars { get; private set; }
+        [JsonProperty("fire_kills_bedwars")] public int FireKillsBedwars { get; private set; }
 
         [JsonProperty("fire_tick_final_kills_bedwars")]
         public int FireTickFinalKillsBedwars { get; private set; }
+
         #endregion
 
         #region solos
+
         [JsonProperty("eight_one_beds_lost_bedwars")]
         public int SolosBedsLostBedwars { get; private set; }
 
@@ -325,11 +290,12 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("eight_one_projectile_deaths_bedwars")]
         public int SolosProjectileDeathsBedwars { get; private set; }
 
-        [JsonProperty("eight_one_winstreak")]
-        public int SolosWinstreak { get; private set; }
+        [JsonProperty("eight_one_winstreak")] public int SolosWinstreak { get; private set; }
+
         #endregion
 
         #region duos
+
         [JsonProperty("eight_two_void_deaths_bedwars")]
         public int DuosVoidDeathsBedwars { get; private set; }
 
@@ -426,14 +392,15 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("eight_two_projectile_deaths_bedwars")]
         public int DuosProjectileDeathsBedwars { get; private set; }
 
-        [JsonProperty("eight_two_winstreak")]
-        public int DuosWinstreak { get; private set; }
+        [JsonProperty("eight_two_winstreak")] public int DuosWinstreak { get; private set; }
 
         [JsonProperty("eight_two_fire_kills_bedwars")]
         public int DuosFireKillsBedwars { get; private set; }
+
         #endregion
 
         #region trios
+
         [JsonProperty("four_three_iron_resources_collected_bedwars")]
         public int TriosIronResourcesCollectedBedwars { get; private set; }
 
@@ -542,12 +509,12 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("four_three_fire_tick_deaths_bedwars")]
         public int TriosFireTickDeathsBedwars { get; private set; }
 
-        [JsonProperty("four_three_winstreak")]
-        public int TriosWinstreak { get; private set; }
+        [JsonProperty("four_three_winstreak")] public int TriosWinstreak { get; private set; }
 
         #endregion
 
         #region fours
+
         [JsonProperty("four_four_beds_broken_bedwars")]
         public int FoursBedsBrokenBedwars { get; private set; }
 
@@ -656,19 +623,19 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("four_four_wrapped_present_resources_collected_bedwars")]
         public int FoursWrappedPresentResourcesCollected { get; private set; }
 
-        [JsonProperty("four_four_winstreak")]
-        public int FoursWinstreak { get; private set; }
+        [JsonProperty("four_four_winstreak")] public int FoursWinstreak { get; private set; }
 
         [JsonProperty("four_four_fire_tick_kills_bedwars")]
         public int FoursFireTickKillsBedwars { get; private set; }
 
         [JsonProperty("four_four_fire_tick_final_kills_bedwars")]
         public int FoursFireTickFinalKillsBedwars { get; private set; }
+
         #endregion
 
         #region castle bedwars mode
-        [JsonProperty("castle_winstreak")]
-        public int CastleWinstreak { get; private set; }
+
+        [JsonProperty("castle_winstreak")] public int CastleWinstreak { get; private set; }
 
         [JsonProperty("castle_beds_lost_bedwars")]
         public int CastleBedsLostBedwars { get; private set; }
@@ -685,8 +652,7 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("castle_games_played_bedwars")]
         public int CastleGamesPlayedBedwars { get; private set; }
 
-        [JsonProperty("castle_wins_bedwars")]
-        public int CastleWinsBedwars { get; private set; }
+        [JsonProperty("castle_wins_bedwars")] public int CastleWinsBedwars { get; private set; }
 
         [JsonProperty("castle_fall_kills_bedwars")]
         public int CastleFallKillsBedwars { get; private set; }
@@ -715,8 +681,7 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
         [JsonProperty("castle_void_kills_bedwars")]
         public int CastleVoidKillsBedwars { get; private set; }
 
-        [JsonProperty("castle_kills_bedwars")]
-        public int CastleKillsBedwars { get; private set; }
+        [JsonProperty("castle_kills_bedwars")] public int CastleKillsBedwars { get; private set; }
 
         [JsonProperty("castle_entity_attack_final_kills_bedwars")]
         public int CastleEntityAttackFinalKillsBedwars { get; private set; }
@@ -783,9 +748,11 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         [JsonProperty("castle_projectile_final_deaths_bedwars")]
         public int CastleProjectileFinalDeathsBedwars { get; private set; }
+
         #endregion
 
         #region rush bedwars mode
+
         [JsonProperty("eight_one_rush_winstreak")]
         public int SolosRushWinstreak { get; private set; }
 
@@ -1019,9 +986,11 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         [JsonProperty("four_four_rush_entity_explosion_final_kills_bedwars")]
         public int FoursRushEntityExplosionFinalKillsBedwars { get; private set; }
+
         #endregion
 
         #region lucky bedwars mode
+
         [JsonProperty("eight_two_lucky_winstreak")]
         public int DuosLuckyWinstreak { get; private set; }
 
@@ -1087,9 +1056,11 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         [JsonProperty("four_four_lucky_wins_bedwars")]
         public int FoursLuckyWinsBedwars { get; private set; }
+
         #endregion
 
         #region Bedwars tourney Dec 2019
+
         [JsonProperty("tourney_bedwars_two_four_0_winstreak2")]
         public int TourneyDec2019WinStreak { get; set; }
 
@@ -1176,6 +1147,7 @@ namespace Hypixel.NET.PlayerApi.Player.Stats
 
         [JsonProperty("tourney_bedwars_two_four_0_losses_bedwars")]
         public int TourneyDec2019Losses { get; set; }
-    #endregion
-}
+
+        #endregion
+    }
 }
